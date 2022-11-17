@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container my-carousel">
+        <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{{ url_for('static', filename='img/cl_1.jpg') }}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='img/cl_2.jpg') }}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='img/cl_3.jpg') }}" class="d-block w-100" alt="...">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+    </div>
+
+    <section class="main-content">
+        <div class="container">
+            <div class="row">
+                {% for p in products %}
+                    <div class="col-lg-3 col-sm-6 mb-3">
+                        <div class="product-card">
+                            <div class="product-thumb">
+                                <a href="#"><img src="{{ url_for('static',filename='/img/3.jpg')}}" alt=""></a>
+                            </div>
+                            <div class="product-details">
+                                <h4><a href="#">{{ p[1] }}</a></h4>
+                                <p>{{ p[3] }}</p>
+                                <div class="product-bottom-details d-flex justify-content-between">
+                                    <div class="product-price">
+                                        {{ p[2] }} RUB
+                                    </div>
+                                    <div class="product-links">
+                                        <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                                        <a href="#"><i class="far fa-heart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

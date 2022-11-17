@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <section class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 mx-auto rounded-2 shadow bg-white">
+                    <div class="m-5 text-center">
+                        <h1>Авторизация</h1>
+                    </div>
+                    <form class="m-5" method="post" action="/login">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="Login" name="login" placeholder="Логин">
+                            <label for="Login">Логин</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="Password" name="password" placeholder="Пароль">
+                            <label for="Password">Пароль</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary ms-auto mb-3">Войти</button>
+                        <div>
+                            У вас нет аккаунта? <a href="{{ account[1].url }}">Зарегистрируйтесь!</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

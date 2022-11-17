@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+    <div class="container" style="padding-bottom: 450px">
+        <p>Имя: {{ current_user.getName() }}</p>
+        <p>Email: {{ current_user.getEmail() }}</p>
+        <p>Login: {{ current_user.getLogin() }}</p>
+        <p><a href="{{ url_for('logout') }}">Выйти из профиля</a></p>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <section class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 mx-auto rounded-2 shadow bg-white">
+                    <div class="m-5 text-center">
+                        <h1>Регистрация</h1>
+                    </div>
+                    <form class="m-5" method="post" action="/signup">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="Name" name="name" placeholder="Имя">
+                            <label for="Name">Имя</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="Login" name="login" placeholder="Логин">
+                            <label for="Login">Логин</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="Email" name="email" placeholder="name@example.com">
+                            <label for="Email">Email</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="Password" name="password" placeholder="Пароль">
+                            <label for="Password">Пароль</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="PasswordAgain" name="password_a" placeholder="Пароль ещё раз">
+                            <label for="PasswordAgain">Пароль ещё раз</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-3">Зарегистрироваться</button>
+                        <div>
+                            У вас уже есть аккаунт? <a href="{{ account[0].url }}">Авторизуйтесь!</a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

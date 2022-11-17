@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% if title %}
+        <title>AutoSound -- {{ title }}</title>
+    {% else %}
+        <title>AutoSound</title>
+    {% endif %}
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">AutoSound</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0 top-menu">
+                  {% for n in menu %}
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{ n.url }}">{{ n.name }}</a>
+                    </li>
+                  {% endfor %}
+              </ul>
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"><i class="fa-regular fa-user"></i></a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        {% for i in account %}
+                            <li><a class="dropdown-item" href="{{ i.url }}">{{ i.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modal-cart"><i class="fa-solid fa-cart-shopping"></i></a>
+                    <div class="modal fade" id="modal-cart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                          <div class="modal-header bg-secondary text-white">
+                            <h5 class="modal-title" id="exampleModalLabel">Корзина</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                            <button type="button" class="btn btn-primary">Оплатить</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modal-fav"><i class="far fa-heart"></i></a>
+                    <div class="modal fade" id="modal-fav" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                          <div class="modal-header bg-secondary text-white">
+                            <h5 class="modal-title" id="exampleModalLabel">Избранное</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                            <button type="button" class="btn btn-primary">Сохранить</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </li>
+              </ul>
+          </div>
+      </div>
+    </nav>
+
+
+    {% block content %}{% endblock %}
+
+
+    <footer>
+		<section class="footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3 col-6">
+						<h4>Информация</h4>
+						<ul class="list-unstyled">
+							<li><a href="#">Главная</a></li>
+							<li><a href="#">О магазине</a></li>
+							<li><a href="#">Оплата и доставка</a></li>
+							<li><a href="#">Контакты</a></li>
+						</ul>
+					</div>
+
+					<div class="col-md-3 col-6">
+						<h4>Время работы</h4>
+						<ul class="list-unstyled">
+							<li>г. Казань, ул. Пушкина, 1</li>
+							<li>пн-вс: 9:00 - 18:00</li>
+							<li>обед: 12:00 - 13:00</li>
+						</ul>
+					</div>
+
+					<div class="col-md-3 col-6">
+						<h4>Контакты</h4>
+						<ul class="list-unstyled">
+							<li><a href="tel:5551234567">555 123-45-67</a></li>
+							<li><a href="tel:5551234568">555 123-45-68</a></li>
+							<li><a href="tel:5551234569">555 123-45-69</a></li>
+						</ul>
+					</div>
+
+					<div class="col-md-3 col-6">
+						<h4>Мы в сети</h4>
+						<div class="footer-icons">
+							<a href="#"><i class="fab fa-facebook-f"></i></a>
+							<a href="#"><i class="fab fa-youtube"></i></a>
+							<a href="#"><i class="fab fa-instagram"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</footer>
+
+    <script src="https://kit.fontawesome.com/c3d4113bae.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
